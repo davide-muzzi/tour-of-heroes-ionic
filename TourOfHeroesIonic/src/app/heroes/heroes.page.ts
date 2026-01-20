@@ -7,6 +7,11 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonButtons,
+  IonButton,
+  IonIcon,
+  IonList,
+  IonItem,
 } from '@ionic/angular/standalone';
 import { HeroService } from '../services/hero-service';
 import { Hero } from '../models/hero';
@@ -21,12 +26,22 @@ import { Hero } from '../models/hero';
     IonHeader,
     IonTitle,
     IonToolbar,
+    IonList,
+    IonItem,
+    IonButtons,
+    IonButton,
+    IonIcon,
     CommonModule,
     FormsModule,
   ],
 })
 export class HeroesPage implements OnInit {
   heroes: Hero[] = [];
+
+  async openAddHero() {
+    // placeholder – we’ll implement the Ionic Alert next
+    console.log('Add hero clicked');
+  }
 
   constructor(
     private heroService: HeroService,
