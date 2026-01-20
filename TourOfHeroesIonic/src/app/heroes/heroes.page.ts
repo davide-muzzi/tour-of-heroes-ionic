@@ -12,6 +12,9 @@ import {
   IonIcon,
   IonList,
   IonItem,
+  IonItemSliding,
+  IonItemOptions,
+  IonItemOption,
 } from '@ionic/angular/standalone';
 import { HeroService } from '../services/hero-service';
 import { Hero } from '../models/hero';
@@ -33,6 +36,9 @@ import { Hero } from '../models/hero';
     IonIcon,
     CommonModule,
     FormsModule,
+    IonItemSliding,
+    IonItemOptions,
+    IonItemOption,
   ],
 })
 export class HeroesPage implements OnInit {
