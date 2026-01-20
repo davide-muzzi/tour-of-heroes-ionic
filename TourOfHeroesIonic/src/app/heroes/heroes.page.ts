@@ -39,8 +39,52 @@ export class HeroesPage implements OnInit {
   heroes: Hero[] = [];
 
   async openAddHero() {
-    // placeholder – we’ll implement the Ionic Alert next
-    console.log('Add hero clicked');
+    const alert = await this.alertCtrl.create({
+      header: 'Neuen Helden erstellen',
+      inputs: [
+        {
+          name: 'id',
+          type: 'number',
+          placeholder: 'Id',
+        },
+        {
+          name: 'name',
+          type: 'text',
+          placeholder: 'Name',
+        },
+        {
+          name: 'power',
+          type: 'text',
+          placeholder: 'Power (optional)',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Abbrechen',
+          role: 'cancel',
+        },
+        {
+          text: 'Erstellen',
+          handler: (data) => {
+            if (!data.id || !data.name) {
+              return false; // keeps alert open
+            }
+
+            this.heroService.addHero({
+              id: Number(data.id),
+              name: data.name,
+              power: data.power,
+            });
+
+            // refresh list
+            this.heroes = this.heroService.getHeroes();
+            return true;
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   constructor(
