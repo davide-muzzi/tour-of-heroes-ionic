@@ -46,7 +46,7 @@ src/app/
 ## 🔗 Related Project
 
 Angular-only version of this project (logic reference):
-https://github.com/USERNAME/OTHER-REPO
+Related Angular version: https://github.com/davide-muzzi/tour-of-heroes
 
 ## 🛠️ Development
 
