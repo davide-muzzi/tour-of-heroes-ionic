@@ -53,6 +53,7 @@ Install dependencies:
 
 ```bash
 npm install
+npx cap sync
 ```
 
 Run the app locally:
