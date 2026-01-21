@@ -15,9 +15,11 @@ import {
   IonItemSliding,
   IonItemOptions,
   IonItemOption,
+  IonLabel,
 } from '@ionic/angular/standalone';
 import { HeroService } from '../services/hero-service';
 import { Hero } from '../models/hero';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-heroes',
@@ -39,6 +41,7 @@ import { Hero } from '../models/hero';
     IonItemSliding,
     IonItemOptions,
     IonItemOption,
+    IonLabel,
   ],
 })
 export class HeroesPage implements OnInit {
@@ -91,6 +94,19 @@ export class HeroesPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async takePicture(hero: Hero) {
+    const photo = await Camera.getPhoto({
+      quality: 80,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera,
+    });
+
+    if (photo.dataUrl) {
+      hero.image = photo.dataUrl;
+      this.heroService.updateHero(hero);
+    }
   }
 
   constructor(

@@ -23,6 +23,13 @@ export class HeroService {
     this.heroes.push(hero);
   }
 
+  updateHero(updatedHero: Hero) {
+    const index = this.heroes.findIndex((h) => h.id === updatedHero.id);
+    if (index !== -1) {
+      this.heroes[index] = updatedHero;
+    }
+  }
+
   deleteHero(id: number) {
     this.heroes = this.heroes.filter((h) => h.id !== id);
   }
